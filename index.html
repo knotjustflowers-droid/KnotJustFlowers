@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Knot Just Flowers — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --sage:#A8BCA1;
+      --blush:#F6C2C2;
+      --ivory:#f8f0e4;
+      --char:#4A4A4A;
+      --max-width:1100px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Montserrat',sans-serif;color:var(--char);background:var(--ivory);overflow-x:hidden;
+    }
+
+    /* Watercolor background simulation */
+    body::before{
+      content:"";position:fixed;inset:0;z-index:-1;
+      background:radial-gradient(circle at 10% 20%, rgba(168,188,161,0.08), transparent 8%),
+                 radial-gradient(circle at 80% 40%, rgba(246,194,194,0.08), transparent 10%),
+                 radial-gradient(circle at 30% 80%, rgba(255,248,231,0.7), transparent 40%),
+                 linear-gradient(180deg,rgba(255,255,255,0.4),rgba(255,255,255,0.1));
+	opacity:0.5;
+	background-image: url('edited.png');
+	
+      background-blend-mode:multiply;
+    }
+
+    header{
+      position:fixed;top:0;left:0;right:0;z-index:1000;
+      background:rgba(248, 240, 228);backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(74,74,74,0.08);
+    }
+
+    .nav-container{
+      max-width:var(--max-width);margin:auto;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:10px 20px;
+    }
+
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{width:50px;height:50px;border-radius:50%;box-shadow:0 3px 6px rgba(0,0,0,0.15)}
+    .brand h1{font-family:'Crimson Pro',serif;font-size:20px;color:var(--char);margin:0}
+    .brand p{font-size:12px;color:rgba(74,74,74,0.8)}
+
+    nav ul{display:flex;gap:16px;list-style:none}
+    nav a{text-decoration:none;color:var(--char);font-weight:600;padding:8px 12px;border-radius:8px;transition:background .3s,transform .3s}
+    nav a:hover{background:rgba(168,188,161,0.15);transform:translateY(-2px)}
+
+    main{margin-top:90px;}
+
+    section{max-width:var(--max-width);margin:auto;padding:60px 20px;position:relative}
+
+    h2.section-title{font-family:'Crimson Pro',serif;font-size:32px;text-align:center;margin-bottom:20px;color:var(--char)}
+
+    .hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;animation:fadeIn 1.5s ease}
+    .hero img{width:220px;border-radius:50%;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
+    .hero p{max-width:650px;font-size:16px;color:rgba(74,74,74,0.8)}
+
+    @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:30px}
+    .card{background:rgba(255,255,255,0.9);border-radius:14px;box-shadow:0 8px 25px rgba(0,0,0,0.05);padding:20px;text-align:center;transition:transform .3s, box-shadow .3s}
+    .card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.1)}
+    .card .img{height:150px;border-radius:10px;background:linear-gradient(135deg,var(--sage),var(--blush));display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:18px;margin-bottom:12px}
+    .card p{font-size:14px;color:rgba(74,74,74,0.8)}
+
+    .testimonials{display:flex;gap:16px;overflow-x:auto;padding:20px 0}
+    .testimonial{flex:0 0 300px;background:white;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.05);padding:16px}
+    .testimonial strong{display:block;margin-bottom:6px}
+    .testimonial .stars{color:gold}
+
+    footer{text-align:center;padding:30px;color:rgba(74,74,74,0.7);font-size:14px;background:rgba(255,255,255,0.7)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="brand">
+        <img src="A_digital_graphic_design_features_a_branding_desig2.png" alt="Knot Just Flowers Logo">
+        <div>
+          <h1>Knot Just Flowers</h1>
+          <p>Where Twists Turn into Blooms</p>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#feedback">Feedback</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <img src="A_digital_graphic_design_features_a_branding_desig2.png" alt="Knot Just Flowers Logo">
+      <h2 class="section-title">Welcome to Knot Just Flowers</h2>
+      <p>Discover the whimsical world of handcrafted fuzzy-wire flowers — a blend of artistry, playfulness, and timeless beauty. Each piece is artfully twisted to bring a sense of wonder and charm to your space.</p>
+    </section>
+
+    <section id="products">
+      <h2 class="section-title">Our Creations</h2>
+      <div class="grid">
+        <div class="card"><div class="img">Single Stem</div><strong>Single Stem Flowers</strong><p>Delicate, minimalist designs for subtle elegance.</p></div>
+        <div class="card"><div class="img">Bouquet</div><strong>Bouquets</strong><p>Whimsical, mixed arrangements perfect for gifting or decor.</p></div>
+        <div class="card"><div class="img">Common</div><strong>Common Flowers</strong><p>Classic wire blossoms inspired by everyday favorites.</p></div>
+        <div class="card"><div class="img">Seasonal</div><strong>Seasonal Limited</strong><p>Exclusive designs available only for a short time.</p></div>
+      </div>
+    </section>
+
+    <section id="feedback">
+      <h2 class="section-title">Customer Feedback</h2>
+      <div class="testimonials">
+        <div class="testimonial"><strong>Ana R.</strong><p>Absolutely magical! The tiny details made my mother cry — in a good way.</p><div class="stars">★★★★★</div></div>
+        <div class="testimonial"><strong>Miguel P.</strong><p>Long-lasting and whimsical; perfect desk decoration.</p><div class="stars">★★★★★</div></div>
+        <div class="testimonial"><strong>Sofia L.</strong><p>Custom order for a wedding — the bouquet was stunning and arrived on time.</p><div class="stars">★★★★★</div></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">About Us</h2>
+      <p style="text-align:center;max-width:700px;margin:auto;color:rgba(74,74,74,0.8)">Knot Just Flowers is a studio dedicated to crafting handmade fuzzy-wire flowers that never fade. Inspired by vintage botanical illustrations and the whimsical charm of The Secret Garden, each creation is lovingly twisted by hand with sustainability and artistry in mind.</p>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p style="text-align:center;font-size:16px;color:rgba(74,74,74,0.8)">For inquiries or collaborations, reach out to us at:<br><strong><a href="mailto:knotjustflowers.4u@gmail.com">knotjustflowers.4u@gmail.com</a></strong></p>
+    </section>
+  </main>
+
+  <footer>
+    © Knot Just Flowers — Whimsical Handmade Floral Art
+  </footer>
+
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+      anchor.addEventListener('click',function(e){
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+      });
+    });
+  </script>
+</body>
+</html>
