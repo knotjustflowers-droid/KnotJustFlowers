@@ -37,7 +37,51 @@
       background:rgba(255,255,255,0.75);backdrop-filter:blur(10px);
       border-bottom:1px solid rgba(74,74,74,0.08);
     }
+	  /* CSS for butterfly effect	  */
 
+	  /* Butterfly animation overlay */
+.butterfly-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.butterfly {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0;
+  animation: flyUp 10s ease-in-out forwards;
+}
+
+@keyframes flyUp {
+  0% {
+    transform: translateY(0) scale(0.9) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-200px) scale(1) rotate(15deg);
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-400px) scale(1.1) rotate(-10deg);
+    opacity: 0;
+  }
+}
+
+
+	  /* End of the effect */
+	  
     .nav-container{
       max-width:var(--max-width);margin:auto;
       display:flex;align-items:center;justify-content:space-between;
@@ -171,7 +215,7 @@
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
       });
-    });
+    });	  
 
     // Fade/slide animations on scroll
     const sections=document.querySelectorAll('section');
@@ -182,5 +226,42 @@
     },{threshold:0.2});
     sections.forEach(sec=>observer.observe(sec));
   </script>
+
+	<script>
+		// Script for Butterfly effect
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.createElement("div");
+  container.classList.add("butterfly-container");
+  document.body.appendChild(container);
+
+  const colors = ["#F6C2C2", "#A8BCA1", "#D7C6E9"]; // blush, sage, lavender
+  const butterflyCount = 15;
+
+  for (let i = 0; i < butterflyCount; i++) {
+    const butterfly = document.createElement("div");
+    butterfly.classList.add("butterfly");
+
+    // Create a simple butterfly shape using emoji or gradient SVG (lightweight)
+    butterfly.style.backgroundImage =
+      "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 64 64\" fill=\"" +
+      encodeURIComponent(colors[Math.floor(Math.random() * colors.length)]) +
+      "\"><path d=\"M32 2c-6 4-10 9-12 14s-2 10 1 14c3 4 9 5 11 8s-1 7 2 10c3 3 7 3 10 2 3-1 6-4 7-8 1-4 0-9-3-13s-6-7-9-9c-3-2-5-2-7-2z\"/></svg>')";
+    
+    butterfly.style.left = Math.random() * 100 + "vw";
+    butterfly.style.bottom = "-50px";
+    butterfly.style.animationDelay = (Math.random() * 3) + "s";
+    butterfly.style.transform = `scale(${0.8 + Math.random() * 0.4})`;
+    container.appendChild(butterfly);
+  }
+
+  // Remove after animation ends (~11 seconds)
+  setTimeout(() => {
+    container.style.transition = "opacity 1s ease";
+    container.style.opacity = "0";
+    setTimeout(() => container.remove(), 1000);
+  }, 11000);
+});
+</script>
+
 </body>
 </html>
