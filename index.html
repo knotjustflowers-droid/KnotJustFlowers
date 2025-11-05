@@ -18,6 +18,28 @@
     body{
       font-family:'Montserrat',sans-serif;color:var(--char);background:var(--ivory);overflow-x:hidden;
     }
+	  /* Ensure consistent image card size */
+	.img {
+	  width: 100%;
+	  max-width: 250px;
+	  height: 180px;
+	  margin: 0 auto 12px;
+	  border-radius: 10px;
+	  background: linear-gradient(135deg, var(--sage), var(--blush));
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  color: white;
+	  font-weight: 600;
+	  font-size: 18px;
+	  text-align: center;
+	  transition: transform 0.3s ease;
+	}
+	
+	.img:hover {
+	  transform: scale(1.03);
+	}
+
 
     /* Watercolor background simulation */
     body::before{
