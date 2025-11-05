@@ -235,19 +235,6 @@
     © Knot Just Flowers — Whimsical Handmade Floral Art
   </footer>
 
-		<!-- Image Viewer Modal -->
-	<div id="imageModal" style="
-	  position: fixed;
-	  inset: 0;
-	  background: rgba(0,0,0,0.8);
-	  display: none;
-	  align-items: center;
-	  justify-content: center;
-	  z-index: 10000;
-	">
-	  <img id="modalImage" src="Item1.png" alt="Full View" style="max-width:90%;max-height:90%;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
-	</div>
-
   <script>
     // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
@@ -302,38 +289,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 11000);
 });
 </script>
-
-	<script>
-document.addEventListener("DOMContentLoaded", () => {
-  // Enable image modal view
-  const images = document.querySelectorAll(".img");
-  const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("modalImage");
-
-  images.forEach(img => {
-    img.addEventListener("click", () => {
-      const bg = img.style.backgroundImage;
-      if (bg && bg.includes("url")) {
-        // Extract the URL from background-image
-        const url = bg.slice(5, -2);
-        modalImg.src = url;
-        modal.style.display = "flex";
-      }
-    });
-  });
-
-  // Close modal when clicking outside the image
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  });
-});
-</script>
-
-
-	
-
 
 </body>
 </html>
