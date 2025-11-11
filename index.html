@@ -18,33 +18,33 @@
     body{
       font-family:'Montserrat',sans-serif;color:var(--char);background:var(--ivory);overflow-x:hidden;
     }
-		 /* Maintain image ratio and add click-view feature */
-	.img {
-	  width: 100%;
-	  max-width: 250px;
-	  aspect-ratio: 4 / 3; /* Keeps the original shape consistent */
-	  margin: 0 auto 12px;
-	  border-radius: 10px;
-	  background-size: cover;
-	  background-position: center;
-	  background-repeat: no-repeat;
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
-	  color: white;
-	  font-weight: 600;
-	  font-size: 18px;
-	  text-align: center;
-	  transition: transform 0.3s ease, box-shadow 0.3s ease;
-	  cursor: pointer;
-	}
-	
-	.img:hover {
-	  transform: scale(1.03);
-	  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-	}
 
+    /* Maintain image ratio and add click-view feature */
+    .img {
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 4 / 3; /* Keeps the original shape consistent */
+      margin: 0 auto 12px;
+      border-radius: 10px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 18px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      overflow: hidden;
+    }
 
+    .img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
 
     /* Watercolor background simulation */
     body::before{
@@ -53,9 +53,8 @@
                  radial-gradient(circle at 80% 40%, rgba(246,194,194,0.08), transparent 10%),
                  radial-gradient(circle at 30% 80%, rgba(255,248,231,0.7), transparent 40%),
                  linear-gradient(180deg,rgba(255,255,255,0.4),rgba(255,255,255,0.1));
-		opacity:0.5;
-		background-image: url('edited.png');
-	
+      opacity:0.5;
+      background-image: url('edited.png');
       background-blend-mode:multiply;
     }
 
@@ -64,51 +63,41 @@
       background:rgba(255,255,255,0.75);backdrop-filter:blur(10px);
       border-bottom:1px solid rgba(74,74,74,0.08);
     }
-	  /* CSS for butterfly effect	  */
 
-	  /* Butterfly animation overlay */
-.butterfly-container {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  z-index: 9999;
-  pointer-events: none;
-}
+    /* Butterfly animation overlay */
+    .butterfly-container {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      z-index: 9999;
+      pointer-events: none;
+    }
+    .butterfly {
+      position: absolute;
+      width: 56px; /* medium size */
+      height: 56px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0;
+      animation: flyUp 10s ease-in-out forwards;
+      will-change: transform, opacity;
+    }
+    @keyframes flyUp {
+      0% {
+        transform: translateY(0) scale(0.9) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      35% { transform: translateY(-140px) translateX(20px) scale(1.05) rotate(8deg); opacity: 1; }
+      65% { transform: translateY(-260px) translateX(-30px) scale(1.02) rotate(-6deg); opacity: 0.9; }
+      90% { opacity: 0.6; }
+      100% {
+        transform: translateY(-420px) translateX(10px) scale(1.1) rotate(-10deg);
+        opacity: 0;
+      }
+    }
+    /* End butterfly */
 
-.butterfly {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  opacity: 0;
-  animation: flyUp 10s ease-in-out forwards;
-}
-
-@keyframes flyUp {
-  0% {
-    transform: translateY(0) scale(0.9) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(-200px) scale(1) rotate(15deg);
-    opacity: 1;
-  }
-  90% {
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(-400px) scale(1.1) rotate(-10deg);
-    opacity: 0;
-  }
-}
-
-
-	  /* End of the effect */
-	  
     .nav-container{
       max-width:var(--max-width);margin:auto;
       display:flex;align-items:center;justify-content:space-between;
@@ -147,7 +136,7 @@
     @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:30px}
-    .card{background:rgba(255,255,255,0.9);border-radius:14px;box-shadow:0 8px 25px rgba(0,0,0,0.05);padding:20px;text-align:center;transition:transform .3s, box-shadow .3s}
+    .card{background:rgba(255,255,255,0.9);border-radius:14px;box-shadow:0 8px 25px rgba(0,0,0,0.05);padding:20px;text-align:center;transition:transform .3s, box-shadow .3s;cursor:pointer}
     .card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.1)}
     .card .img{height:200px;border-radius:10px;background:linear-gradient(135deg,var(--sage),var(--blush));display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:18px;margin-bottom:12px}
     .card p{font-size:14px;color:rgba(74,74,74,0.8)}
@@ -158,6 +147,74 @@
     .testimonial .stars{color:gold}
 
     footer{text-align:center;padding:30px;color:rgba(74,74,74,0.7);font-size:14px;background:rgba(255,255,255,0.7)}
+
+    /* Gallery modal styles */
+    .gallery-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.7);
+      z-index: 10010;
+      padding: 20px;
+    }
+    .gallery-modal.open { display: flex; }
+    .gallery-card {
+      width: 100%;
+      max-width: 980px;
+      background: rgba(255,255,255,0.96);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap:0;
+    }
+    .gallery-main {
+      position: relative;
+      background: #f2efe9;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height: 420px;
+    }
+    .gallery-main img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 6px;
+      transition: opacity .35s ease, transform .35s ease;
+    }
+    .gallery-side {
+      padding: 18px;
+      background: rgba(255,255,255,0.98);
+      overflow-y:auto;
+    }
+    .thumb {
+      height: 76px;
+      border-radius: 8px;
+      background-size: cover;
+      background-position:center;
+      margin-bottom:12px;
+      border: 2px solid transparent;
+      cursor:pointer;
+    }
+    .thumb.active { border-color: var(--sage); transform: scale(1.02); }
+    .gallery-controls {
+      position:absolute;
+      left:12px;right:12px;top:12px;display:flex;justify-content:space-between;pointer-events:none;
+    }
+    .ctrl {
+      background: rgba(255,255,255,0.85); pointer-events:auto;
+      border:none;padding:10px 12px;border-radius:8px;cursor:pointer;font-weight:700;
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    }
+    .close-btn { position:absolute; right:14px; top:14px; background:transparent;border:none;font-size:20px;cursor:pointer; }
+    @media(max-width:900px){
+      .gallery-card{grid-template-columns: 1fr; }
+      .gallery-side{display:flex;gap:8px;padding:12px;overflow:auto}
+      .thumb{width:120px;flex:0 0 auto}
+    }
   </style>
 </head>
 <body>
@@ -192,11 +249,31 @@
 
     <section id="products">
       <h2 class="section-title">Our Creations</h2>
-      <div class="grid">
-        <div class="card"><div class="img"><img src="Item1(2).png" class="img" alt="Potted plant"></div><strong>Potted Plants</strong><p>Delicate, minimalist designs for subtle elegance.</p></div>
-        <div class="card"><div class="img">Bouquet</div><strong>Bouquets</strong><p>Whimsical, mixed arrangements perfect for gifting or decor.</p></div>
-        <div class="card"><div class="img">Common</div><strong>Common Flowers</strong><p>Classic wire blossoms inspired by everyday favorites.</p></div>
-        <div class="card"><div class="img">Seasonal</div><strong>Seasonal Limited</strong><p>Exclusive designs available only for a short time.</p></div>
+      <div class="grid" id="productGrid">
+        <!-- Each .card now has data-gallery (comma-separated image URLs). Update URLs to your real images -->
+        <div class="card" data-gallery="Item1(2).png,Item1b.png,Item1c.png" data-title="Potted Plants">
+          <div class="img" style="background-image:url('Item1(2).png');" aria-hidden></div>
+          <strong>Potted Plants</strong>
+          <p>Delicate, minimalist designs for subtle elegance.</p>
+        </div>
+
+        <div class="card" data-gallery="Bouquet1.png,Bouquet1b.png" data-title="Bouquets">
+          <div class="img" style="background-image:url('BouquetThumb.png');" aria-hidden>Bouquet</div>
+          <strong>Bouquets</strong>
+          <p>Whimsical, mixed arrangements perfect for gifting or decor.</p>
+        </div>
+
+        <div class="card" data-gallery="Common1.png,Common2.png" data-title="Common Flowers">
+          <div class="img" style="background-image:url('CommonThumb.png');" aria-hidden>Common</div>
+          <strong>Common Flowers</strong>
+          <p>Classic wire blossoms inspired by everyday favorites.</p>
+        </div>
+
+        <div class="card" data-gallery="Seasonal1.png,Seasonal2.png" data-title="Seasonal Limited">
+          <div class="img" style="background-image:url('SeasonalThumb.png');" aria-hidden>Seasonal</div>
+          <strong>Seasonal Limited</strong>
+          <p>Exclusive designs available only for a short time.</p>
+        </div>
       </div>
     </section>
 
@@ -228,6 +305,20 @@
     <section id="contact">
       <h2 class="section-title">Contact</h2>
       <p style="text-align:center;font-size:16px;color:rgba(74,74,74,0.8)">For inquiries or collaborations, reach out to us at:<br><strong><a href="mailto:knotjustflowers.4u@gmail.com">knotjustflowers.4u@gmail.com</a></strong></p>
+
+      <p style="text-align:center;margin-top:12px">
+        Or reach out on Instagram:
+        <a href="https://www.instagram.com/knot_just_flowersss/" target="_blank" rel="noopener" aria-label="Knot Just Flowers Instagram" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--char);margin-left:8px">
+          <!-- simple SVG IG icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="#4A4A4A" stroke-width="1.2" fill="#fff"/>
+            <path d="M12 8.4a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 0 0 0-7.2z" stroke="#4A4A4A" stroke-width="1.2" fill="none"/>
+            <circle cx="17.5" cy="6.5" r="0.7" fill="#4A4A4A"/>
+          </svg>
+          @knot_just_flowersss
+        </a>
+      </p>
+
     </section>
   </main>
 
@@ -235,14 +326,35 @@
     © Knot Just Flowers — Whimsical Handmade Floral Art
   </footer>
 
+  <!-- Gallery modal -->
+  <div class="gallery-modal" id="galleryModal" aria-hidden="true">
+    <div class="gallery-card" role="dialog" aria-modal="true" aria-labelledby="galleryTitle">
+      <div class="gallery-main">
+        <div class="gallery-controls">
+          <button class="ctrl" id="prevBtn" aria-label="Previous">‹ Prev</button>
+          <button class="ctrl" id="nextBtn" aria-label="Next">Next ›</button>
+        </div>
+        <button class="close-btn" id="closeGallery" aria-label="Close">✕</button>
+        <div style="display:flex;align-items:center;justify-content:center;width:100%;padding:18px;">
+          <img id="galleryImage" src="" alt="Gallery image">
+        </div>
+      </div>
+      <aside class="gallery-side" id="gallerySide">
+        <h3 id="galleryTitle" style="margin:0 0 12px;font-family:'Crimson Pro',serif">Gallery</h3>
+        <div id="thumbs"></div>
+      </aside>
+    </div>
+  </div>
+
   <script>
     // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
       anchor.addEventListener('click',function(e){
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({behavior:'smooth'});
       });
-    });	  
+    });
 
     // Fade/slide animations on scroll
     const sections=document.querySelectorAll('section');
@@ -254,41 +366,150 @@
     sections.forEach(sec=>observer.observe(sec));
   </script>
 
-	<script>
-		// Script for Butterfly effect
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.createElement("div");
-  container.classList.add("butterfly-container");
-  document.body.appendChild(container);
+  <script>
+    // Butterfly effect (page-load only)
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.createElement("div");
+      container.classList.add("butterfly-container");
+      document.body.appendChild(container);
 
-  const colors = ["#F6C2C2", "#A8BCA1", "#D7C6E9"]; // blush, sage, lavender
-  const butterflyCount = 15;
+      const colors = ["#F6C2C2", "#A8BCA1", "#D7C6E9"]; // blush, sage, lavender
+      const butterflyCount = 15;
 
-  for (let i = 0; i < butterflyCount; i++) {
-    const butterfly = document.createElement("div");
-    butterfly.classList.add("butterfly");
+      for (let i = 0; i < butterflyCount; i++) {
+        const butterfly = document.createElement("div");
+        butterfly.classList.add("butterfly");
 
-    // Create a simple butterfly shape using emoji or gradient SVG (lightweight)
-    butterfly.style.backgroundImage =
-      "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 64 64\" fill=\"" +
-      encodeURIComponent(colors[Math.floor(Math.random() * colors.length)]) +
-      "\"><path d=\"M32 2c-6 4-10 9-12 14s-2 10 1 14c3 4 9 5 11 8s-1 7 2 10c3 3 7 3 10 2 3-1 6-4 7-8 1-4 0-9-3-13s-6-7-9-9c-3-2-5-2-7-2z\"/></svg>')";
-    
-    butterfly.style.left = Math.random() * 100 + "vw";
-    butterfly.style.bottom = "-50px";
-    butterfly.style.animationDelay = (Math.random() * 3) + "s";
-    butterfly.style.transform = `scale(${0.8 + Math.random() * 0.4})`;
-    container.appendChild(butterfly);
-  }
+        // lightweight inline SVG butterfly (fill picks a random pastel)
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const svg = encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><g fill='${color}'><path d='M46.5 9c-6 1-11 5-14 9s-6 8-6 12 2 9 6 12c4 3 9 4 14 3 5-1 8-4 9-8 1-4 0-9-3-13s-7-9-10-15z'/><path d='M17.5 9c6 1 11 5 14 9s6 8 6 12-2 9-6 12c-4 3-9 4-14 3-5-1-8-4-9-8-1-4 0-9 3-13s7-9 10-15z'/></g></svg>`);
+        butterfly.style.backgroundImage = `url('data:image/svg+xml;utf8,${svg}')`;
 
-  // Remove after animation ends (~11 seconds)
-  setTimeout(() => {
-    container.style.transition = "opacity 1s ease";
-    container.style.opacity = "0";
-    setTimeout(() => container.remove(), 1000);
-  }, 11000);
-});
-</script>
+        // random horizontal start
+        const startX = Math.random() * 100; // vw
+        butterfly.style.left = (startX) + "vw";
+
+        // slight horizontal variance by animating transform via JS later
+        butterfly.style.bottom = "-80px";
+        butterfly.style.animationDelay = (Math.random() * 2) + "s";
+        butterfly.style.transform = `scale(${0.9 + Math.random() * 0.5})`;
+
+        // random horizontal movement via CSS variable
+        const moveX = (Math.random() * 200 - 100).toFixed(2);
+        butterfly.style.setProperty('--moveX', moveX + 'px');
+
+        container.appendChild(butterfly);
+      }
+
+      // After ~11 seconds, fade and remove container
+      setTimeout(() => {
+        container.style.transition = "opacity 1s ease";
+        container.style.opacity = "0";
+        setTimeout(() => container.remove(), 1000);
+      }, 11000);
+    });
+  </script>
+
+  <script>
+    // Gallery modal functionality for "Our Creations" cards
+    (function(){
+      const cards = document.querySelectorAll('#productGrid .card');
+      const modal = document.getElementById('galleryModal');
+      const galleryImage = document.getElementById('galleryImage');
+      const thumbsContainer = document.getElementById('thumbs');
+      const galleryTitle = document.getElementById('galleryTitle');
+      const closeBtn = document.getElementById('closeGallery');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+
+      let currentGallery = [];
+      let currentIndex = 0;
+
+      function openGallery(images, title, startIndex=0){
+        if(!images || images.length === 0) return;
+        currentGallery = images;
+        currentIndex = startIndex;
+        galleryTitle.textContent = title || 'Gallery';
+        renderMain();
+        renderThumbs();
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeGallery(){
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+      }
+
+      function renderMain(){
+        galleryImage.style.opacity = 0;
+        // small delay for nicer transition
+        setTimeout(()=>{
+          galleryImage.src = currentGallery[currentIndex];
+          galleryImage.alt = `${galleryTitle.textContent} — ${currentIndex+1} of ${currentGallery.length}`;
+          galleryImage.style.opacity = 1;
+          // update active thumb
+          const thumbs = thumbsContainer.querySelectorAll('.thumb');
+          thumbs.forEach((t,i)=> t.classList.toggle('active', i === currentIndex));
+        }, 80);
+      }
+
+      function renderThumbs(){
+        thumbsContainer.innerHTML = '';
+        currentGallery.forEach((src, idx)=>{
+          const d = document.createElement('div');
+          d.className = 'thumb';
+          d.style.backgroundImage = `url('${src}')`;
+          if(idx === currentIndex) d.classList.add('active');
+          d.addEventListener('click', ()=> {
+            currentIndex = idx;
+            renderMain();
+          });
+          thumbsContainer.appendChild(d);
+        });
+      }
+
+      prevBtn.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+        renderMain();
+      });
+      nextBtn.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % currentGallery.length;
+        renderMain();
+      });
+
+      closeBtn.addEventListener('click', closeGallery);
+
+      // close on overlay click outside gallery-card
+      modal.addEventListener('click', (e)=>{
+        if(e.target === modal) closeGallery();
+      });
+
+      // keyboard support
+      document.addEventListener('keydown', (e)=>{
+        if(modal.classList.contains('open')){
+          if(e.key === 'Escape') closeGallery();
+          if(e.key === 'ArrowLeft') { currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length; renderMain(); }
+          if(e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % currentGallery.length; renderMain(); }
+        }
+      });
+
+      // attach click handlers to cards
+      cards.forEach(card=>{
+        card.addEventListener('click', ()=>{
+          const data = card.getAttribute('data-gallery') || '';
+          const title = card.getAttribute('data-title') || 'Gallery';
+          const images = data.split(',').map(s => s.trim()).filter(Boolean);
+          // if only filenames provided, you may want to prefix a path; keep as-is for now
+          openGallery(images, title, 0);
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
