@@ -239,7 +239,7 @@
       </nav>
     </div>
   </header>
-
+<canvas id="petals"></canvas>
   <main>
     <section id="home" class="hero">
   <div class="home-wrapper" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;animation:fadeIn 1.5s ease forwards;opacity:0;">
@@ -248,11 +248,11 @@
     <img src="animated logo optimized.gif" alt="Knot Just Flowers Logo" style="width:180px;border-radius:50%;box-shadow:0 4px 10px rgba(0,0,0,0.1);margin-bottom:20px;">
 
     <!-- Big Typography Closing Message -->
-    <h1 style="font-family:'Crimson Pro',serif;font-size:clamp(50px,6vw,90px);color:#4A4A4A;margin-bottom:10px;opacity:0;animation:fadeUp 1s ease forwards;animation-delay:0.3s;">
-      We Are Closing
+    <h1 style="font-family:'Crimson Pro',serif;font-size:clamp(50px,6vw,90px);color:#4A4A4A;margin-bottom:5px;opacity:0;animation:fadeUp 1s ease forwards;animation-delay:0.3s;">
+      We Are Closed
     </h1>
 
-    <h2 style="font-family:'Crimson Pro',serif;font-size:clamp(22px,3vw,28px);color:var(--char);margin-bottom:15px;opacity:0;animation:fadeUp 1s ease forwards;animation-delay:0.6s;">
+    <h2 style="font-family:'Crimson Pro',serif;font-size:clamp(22px,3vw,28px);color:var(--char);margin-bottom:5px;opacity:0;animation:fadeUp 1s ease forwards;animation-delay:0.6s;">
       Knot Just Flowers
     </h2>
 
@@ -266,9 +266,6 @@
       Thank you for every order, message, and moment of support. Your trust in our small business has meant the world.<br>
       Though this chapter ends, the memories we shared will always remain with us.
     </p>
-
-    <div style="width:80px;height:2px;background:var(--blush);margin:20px auto;border-radius:10px;opacity:0;animation:fadeUp 1s ease forwards;animation-delay:2.1s;"></div>
-
     <div style="font-family:'Crimson Pro',serif;font-size:20px;color:#4A4A4A;margin-top:20px;opacity:0;animation:fadeUp 1s ease forwards;animation-delay:2.4s;">
       With heartfelt thanks,<br>
       <b> Knot Just Flowers</b>
@@ -316,7 +313,7 @@
         </div>
       </div>
     </section>
-
+<!------------
     <section id="colors">
       <h2 class="section-title">Customizable Colors</h2>
       <p style="text-align:center;max-width:700px;margin:auto;color:rgba(74,74,74,0.8)">At Knot Just Flowers, we understand that every flower should match your story. Choose from a palette of soft pastels or vibrant tones to customize your wire blooms. Whether you love blush pinks, sage greens, or dreamy lavenders — your arrangement can be uniquely yours!</p>
@@ -327,6 +324,7 @@
         <div class="card"><div class="img" style="background:#D7C6E9">Lavender</div></div>
       </div>
     </section>
+    ----------> 
 
     <section id="feedback">
       <h2 class="section-title">Customer Feedback</h2>
@@ -564,6 +562,56 @@
       });
     })();
   </script>
+  <script>
+const canvas = document.getElementById("petals");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const petals = [];
+const colors = ["#f7c6d9", "#f3a6c2", "#ffd6e7", "#f9dbe9"];
+
+for (let i = 0; i < 55; i++) {
+    petals.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 5 + 2,
+        speedY: Math.random() * 0.6 + 0.3,
+        speedX: Math.random() * 0.8 - 0.4,
+        angle: Math.random() * 360
+    });
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let p of petals) {
+        ctx.beginPath();
+        ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+        ctx.ellipse(p.x, p.y, p.r, p.r / 2, Math.PI / 4, 0, Math.PI * 2);
+        ctx.fill();
+
+        p.y += p.speedY;
+        p.x += p.speedX + Math.sin(p.angle) * 0.3;
+        p.angle += 0.01;
+
+        if (p.y > canvas.height + 10) {
+            p.y = -10;
+            p.x = Math.random() * canvas.width;
+        }
+    }
+
+    requestAnimationFrame(draw);
+}
+
+draw();
+
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+</script>
 
 </body>
 </html>
