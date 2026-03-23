@@ -242,10 +242,53 @@
 
   <main>
     <section id="home" class="hero">
-      <img src="animated logo optimized.gif" alt="Knot Just Flowers Logo">
-      <h2 class="section-title">Welcome to Knot Just Flowers</h2>
-      <p>Discover the whimsical world of handcrafted fuzzy-wire flowers — a blend of artistry, playfulness, and timeless beauty. Each piece is artfully twisted to bring a sense of wonder and charm to your space.</p>
-    </section>
+  <div class="home-wrapper" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;animation:fadeIn 1.5s ease forwards;opacity:0;">
+
+    <!-- Logo -->
+    <img src="animated logo optimized.gif" alt="Knot Just Flowers Logo" style="width:180px;border-radius:50%;box-shadow:0 4px 10px rgba(0,0,0,0.1);margin-bottom:20px;">
+
+    <!-- Big Typography Closing Message -->
+    <h1 style="font-family:'Crimson Pro',serif;font-size:clamp(50px,6vw,90px);color:#F6C2C2;margin-bottom:10px;opacity:0;animation:fadeUp 1s ease forwards;animation-delay:0.3s;">
+      We Are Closing
+    </h1>
+
+    <h2 style="font-family:'Crimson Pro',serif;font-size:clamp(22px,3vw,28px);color:var(--char);margin-bottom:15px;opacity:0;animation:fadeUp 1s ease forwards;animation-delay:0.6s;">
+      Knot Just Flowers
+    </h2>
+
+    <div style="width:80px;height:2px;background:var(--blush);margin:20px auto;border-radius:10px;opacity:0;animation:fadeUp 1s ease forwards;animation-delay:0.9s;"></div>
+
+    <p style="max-width:650px;color:var(--char);line-height:1.8;margin:10px auto;opacity:0;animation:fadeUp 1s ease forwards;animation-delay:1.2s;">
+      It is with deep gratitude that we announce <strong>KnotJustFlowers is no longer running.</strong>
+    </p>
+
+    <p style="max-width:650px;color:var(--char);line-height:1.8;margin:10px auto;opacity:0;animation:fadeUp 1s ease forwards;animation-delay:1.5s;">
+      Thank you for every order, message, and moment of support. Your trust in our small business has meant the world.
+    </p>
+
+    <p style="max-width:650px;color:var(--char);line-height:1.8;margin:10px auto;opacity:0;animation:fadeUp 1s ease forwards;animation-delay:1.8s;">
+      Though this chapter ends, the memories we shared will always remain with us.
+    </p>
+
+    <div style="width:80px;height:2px;background:var(--blush);margin:20px auto;border-radius:10px;opacity:0;animation:fadeUp 1s ease forwards;animation-delay:2.1s;"></div>
+
+    <div style="font-family:'Crimson Pro',serif;font-size:20px;color:#F6C2C2;margin-top:20px;opacity:0;animation:fadeUp 1s ease forwards;animation-delay:2.4s;">
+      With heartfelt thanks,<br>
+      Knot Just Flowers
+    </div>
+
+    <div style="font-size:13px;color:rgba(74,74,74,0.7);margin-top:6px;opacity:0;animation:fadeUp 1s ease forwards;animation-delay:2.7s;">
+      Thank you for supporting our small business 🌸
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeUp{
+    from {opacity:0;transform:translateY(25px);}
+    to {opacity:1;transform:translateY(0);}
+  }
+</style>
 
     <section id="products">
       <h2 class="section-title">Our Creations</h2>
